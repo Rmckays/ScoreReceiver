@@ -10,14 +10,24 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/api/scores/<string:name>', methods=['GET'])
-def send_scores(name):
-    return jsonify(csv_util.return_games(name))
+@app.route('/api/history/<string:name>/<string:season>', methods=['GET'])
+def send_scores(name, season):
+    return jsonify(csv_util.return_team_history(name, season))
 
 
-@app.route('/api/wins/<string:name>', methods=['GET'])
-def get_wins(name):
-    return jsonify(csv_util.return_wins(name))
+@app.route('/api/history/wins/<string:name>/<string:season>', methods=['GET'])
+def get_wins(name, season):
+    return jsonify(csv_util.return_wins_history(name, season))
+
+
+@app.route('/api/season/<string:name>/<string:season>', methods=['GET'])
+def get_history(name, season):
+    return jsonify(csv_util.return_season_history(name, season))
+
+
+@app.route('/api/season/wins/<string:name>/<string:season>', methods=['GET'])
+def get_history(name, season):
+    return jsonify(csv_util.return_season_wins(name, season))
 
 
 print('Starting Flask!')
