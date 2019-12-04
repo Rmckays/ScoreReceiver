@@ -12,7 +12,12 @@ def home():
 
 @app.route('/api/scores/<string:name>', methods=['GET'])
 def send_scores(name):
-    return jsonify(csv_util.return_data(name))
+    return jsonify(csv_util.return_games(name))
+
+
+@app.route('/api/wins/<string:name>', methods=['GET'])
+def get_wins(name):
+    return jsonify(csv_util.return_wins(name))
 
 
 print('Starting Flask!')
