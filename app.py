@@ -31,7 +31,7 @@ def get_teams():
 
 
 @app.route('/api/season/wins/<string:name>/<string:season>', methods=['GET'])
-def get_history(name, season):
+def get_history_wins(name, season):
     return jsonify(csv_util.return_season_wins(name, season))
 
 
