@@ -43,6 +43,17 @@ def get_games_season(name, season):
     return data
 
 
+def get_teams():
+    teams = set()
+    with open('scores.csv', 'r') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        next(csv_reader)
+        for line in csv_reader:
+            teams.add(line[4])
+            teams.add(line[4])
+    return teams
+
+
 def return_team_history(name, season):
     data = get_games_history(name, season)
     return data
