@@ -45,13 +45,18 @@ def get_games_season(name, season):
 
 def get_teams():
     teams = set()
+    team_list = {
+        'teams': []
+    }
     with open('scores.csv', 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         next(csv_reader)
         for line in csv_reader:
-            teams.add(line[4])
-            teams.add(line[4])
-    return teams
+            if int(line[1]) > 1980:
+                teams.add(line[4])
+                teams.add(line[5])
+        team_list['teams'] = list(teams)
+    return team_list
 
 
 def return_team_history(name, season):
