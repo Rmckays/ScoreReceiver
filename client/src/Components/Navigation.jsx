@@ -16,7 +16,12 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import PeopleIcon from '@material-ui/icons/People';
+import InfoIcon from '@material-ui/icons/Info';
+import HomeIcon from '@material-ui/icons/Home';
+import HistoryIcon from '@material-ui/icons/History';
+
+
 
 const drawerWidth = 240;
 
@@ -76,6 +81,19 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+const getIcon = (index) => {
+    switch(index){
+        case 0:
+            return <HomeIcon />
+        case 1:
+            return <PeopleIcon />
+        case 2:
+            return <HistoryIcon />
+        case 3:
+            return <InfoIcon />
+    }
+};
+
 export default function Navigation() {
     const classes = useStyles();
     const theme = useTheme();
@@ -129,22 +147,14 @@ export default function Navigation() {
                 </div>
                 <Divider />
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    {['Home', 'Team', 'History', 'About'].map((text, index) => (
                         <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemIcon>{getIcon(index)}</ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
                 </List>
                 <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
             </Drawer>
         </div>
     );

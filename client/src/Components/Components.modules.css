@@ -3,3 +3,25 @@
     height: 100vh;
     background: url("../img/featured.jpg") center center/cover;
 }
+
+#footer {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    color: white;
+    background-color: #3F51B5;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
