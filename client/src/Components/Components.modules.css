@@ -25,3 +25,27 @@
 .align-items-center {
     align-items: center;
 }
+
+.pt-1 {
+    padding-top: 25rem;
+}
+
+.header-1 {
+    font-size: 2rem;
+}
+
+.f-1 {
+    font-size: 1.5rem;
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+.color-main {
+    color: #3F51B5;
+}
+
+.text-white {
+    color: white;
+}

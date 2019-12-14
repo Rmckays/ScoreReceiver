@@ -4,7 +4,7 @@ import Showcase from "../../Components/Showcase";
 import Navigation from "../../Components/Navigation";
 import Footer from "../../Components/Footer";
 
-const HomePage = props => {
+const SearchTeam = props => {
 
     return (
         <>
@@ -19,8 +19,10 @@ const HomePage = props => {
 const mapStateToProps = state => {
     return {
         teams: state.teams,
-        currentTeam: state.currentTeam
+        currentTeam: state.currentTeam,
+        wins: state.wins,
+        history: state.history
     }
 };
 
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps)(SearchTeam);

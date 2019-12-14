@@ -145,7 +145,7 @@ export default function Navigation() {
                 </div>
                 <Divider />
                 <List>
-                    {['Home', 'Search Team', 'About'].map((text, index) => (
+                    {['Home', 'Search Teams', 'About'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>{getIcon(index)}</ListItemIcon>
                             <ListItemText primary={text} />
