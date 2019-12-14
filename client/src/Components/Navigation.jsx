@@ -88,8 +88,6 @@ const getIcon = (index) => {
         case 1:
             return <PeopleIcon />
         case 2:
-            return <HistoryIcon />
-        case 3:
             return <InfoIcon />
     }
 };
@@ -147,7 +145,7 @@ export default function Navigation() {
                 </div>
                 <Divider />
                 <List>
-                    {['Home', 'Team', 'History', 'About'].map((text, index) => (
+                    {['Home', 'Search Team', 'About'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>{getIcon(index)}</ListItemIcon>
                             <ListItemText primary={text} />

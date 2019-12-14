@@ -1,16 +1,17 @@
 import React from 'react';
-import Showcase from './Components/Showcase';
 import './App.css';
-import Navigation from "./Components/Navigation";
-import Footer from "./Components/Footer";
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import HomePage from "./Containers/Pages/Home";
 
 function App() {
   return (
-    <div className="App">
-      <Showcase/>
-      <Navigation />
-      <Footer/>
-    </div>
+      <BrowserRouter>
+           <div className="App">
+                <Switch>
+                    <Route exact path='/' component={HomePage}/>
+                </Switch>
+           </div>
+      </BrowserRouter>
   );
 }
 
