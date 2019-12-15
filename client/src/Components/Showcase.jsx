@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './Components.modules.css';
+import style from './Components.modules.css';
 import Greeting from "./Greeting";
 
 const Showcase = () => {

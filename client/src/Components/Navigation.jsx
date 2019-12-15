@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -20,6 +20,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import HistoryIcon from '@material-ui/icons/History';
+import {Redirect} from "react-router-dom";
 
 
 
@@ -84,11 +85,11 @@ const useStyles = makeStyles(theme => ({
 const getIcon = (index) => {
     switch(index){
         case 0:
-            return <HomeIcon />
+            return <HomeIcon />;
         case 1:
-            return <PeopleIcon />
+            return <PeopleIcon />;
         case 2:
-            return <InfoIcon />
+            return <InfoIcon />;
     }
 };
 
@@ -96,6 +97,7 @@ export default function Navigation() {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const [page, setPage] = useState(null);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -103,6 +105,22 @@ export default function Navigation() {
 
     const handleDrawerClose = () => {
         setOpen(false);
+    };
+
+    const navigateToPage = (event) => {
+        console.log('Hit Button');
+        console.log(event.target.textContent);
+        switch(event.target.textContent){
+            case 'Home':
+                setPage(<Redirect to='/' />);
+                break;
+            case 'Search Teams':
+                setPage(<Redirect to='/search' />);
+                break;
+            case 'About':
+                setPage(<Redirect to='/about' />);
+                break;
+        }
     };
 
     return (
@@ -144,11 +162,12 @@ export default function Navigation() {
                     </IconButton>
                 </div>
                 <Divider />
+                {page}
                 <List>
                     {['Home', 'Search Teams', 'About'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>{getIcon(index)}</ListItemIcon>
-                            <ListItemText primary={text} />
+                            <ListItemText primary={text} onClick={navigateToPage}/>
                         </ListItem>
                     ))}
                 </List>
