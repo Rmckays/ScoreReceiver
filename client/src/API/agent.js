@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from 'axios';
+import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:5000/api';
 
@@ -16,4 +16,9 @@ const getStats = {
 const teams = {
     getTeams: value => requests.get(`/teams`)
 };
+
+export default {
+    getStats,
+    teams
+}
 
