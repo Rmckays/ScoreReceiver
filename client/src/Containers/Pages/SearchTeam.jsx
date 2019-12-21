@@ -3,12 +3,13 @@ import {connect} from 'react-redux';
 import Showcase from "../../Components/Showcase";
 import Navigation from "../../Components/Navigation";
 import Footer from "../../Components/Footer";
+import SearchInput from "../../Components/SearchInput";
 
-const SearchTeam = props => {
+const SearchTeam = () => {
 
     return (
         <>
-            <Showcase/>
+            <Showcase childComp={<SearchInput/>}/>
             <Navigation />
             <Footer/>
         </>

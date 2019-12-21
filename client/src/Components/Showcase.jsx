@@ -2,11 +2,11 @@ import React from "react";
 import style from './Components.modules.css';
 import Greeting from "./Greeting";
 
-const Showcase = () => {
+const Showcase = ({childComp}) => {
     return (
         <div className="backdrop">
             <div className='d-flex justify-content-center align-items-center'>
-                <Greeting/>
+                {childComp}
             </div>
         </div>
     )

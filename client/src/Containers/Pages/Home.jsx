@@ -3,12 +3,13 @@ import {connect} from 'react-redux';
 import Showcase from "../../Components/Showcase";
 import Navigation from "../../Components/Navigation";
 import Footer from "../../Components/Footer";
+import Greeting from "../../Components/Greeting";
 
 const HomePage = props => {
 
     return (
         <>
-            <Showcase/>
+            <Showcase childComp={<Greeting/>}/>
             <Navigation />
             <Footer/>
         </>
@@ -16,10 +17,10 @@ const HomePage = props => {
 
 };
 
-const mapStateToProps = state => {
-    return {
-        teams: state.teams,
-    }
-};
+// const mapStateToProps = state => {
+//     return {
+//         teams: state.teams,
+//     }
+// };
 
-export default connect(mapStateToProps)(HomePage);
+export default HomePage;
