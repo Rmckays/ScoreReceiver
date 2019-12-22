@@ -4,27 +4,21 @@ import {connect} from "react-redux";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import axios from "axios";
+import * as dispatchState from "../Stores/actionTypes";
 
 const SearchInput = (props) => {
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/teams')
+        agent.teams.getTeams()
             .then(response => {
-                    console.log("From Axios");
-                    console.log(response.data.teams);
-                    props.loadTeams(response.data.teams);
-                    console.log(props.teams);
-                }
-            )
-        // agent.teams.getTeams()
-        //     .then(response => {
-        //         console.log(response.data);
-        //         props.loadTeams(response);})
+                console.log(response.teams);
+                props.loadTeams(response.teams);})
     }, []);
 
-    // const handleChange = event => {
-    //     props.changeTeam(event);
-    // };
+    const handleChange = event => {
+        console.log(event.target.value);
+        props.changeTeam(event.target.value);
+    };
 
     const teamList = props.teams.map(team => {
         return(
@@ -33,11 +27,13 @@ const SearchInput = (props) => {
     });
 
     return (
-        <div className='searchInput pt-1'>
+        <div className='searchInput mt-1 '>
+            <p className="text-white f-1">Please select a NFL Team to search.</p>
             <Select
+              className="bg-white w-1"
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              // onChange={handleChange}
+              onChange={handleChange}
             >
                 {teamList}
             </Select>
@@ -58,12 +54,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         loadTeams: (teams) => {
-            console.log("From Dispatch");
-            console.log(teams);
-            dispatch({type:"LOADTEAMS", val: teams})
+            dispatch({type:dispatchState.loadTeams, val: teams})
         },
-        changeTeam: event => {
-            dispatch({type:"CHANGETEAM", val: event.target.value})
+        changeTeam: team => {
+            dispatch({type:dispatchState.teamChange, val: team})
         }
     }
 };
