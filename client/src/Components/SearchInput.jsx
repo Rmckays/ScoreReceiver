@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import * as dispatchState from "../Stores/actionTypes";
+import {getTeamName} from '../Util/teamNames';
 
 const SearchInput = (props) => {
 
@@ -22,7 +23,7 @@ const SearchInput = (props) => {
 
     const teamList = props.teams.map(team => {
         return(
-            <MenuItem value={team}>{team}</MenuItem>
+            <MenuItem value={team}>{team} - {getTeamName(team)}</MenuItem>
         )
     });
 
