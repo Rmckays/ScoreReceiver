@@ -1,15 +1,28 @@
 import React from "react";
 import style from './Components.modules.css';
-import Greeting from "./Greeting";
+import DenseTable from "./Table";
+import {connect} from "react-redux";
 
-const Showcase = ({childComp}) => {
+const Showcase = (props) => {
+    const showTable = (props.seasonVsHistory) ? <DenseTable/> : null;
+
     return (
         <div className="backdrop">
             <div className='d-flex justify-content-center align-items-center'>
-                {childComp}
+                <div className="showcaseChild">
+                    {props.childComp}
+                </div>
+
+                {showTable}
             </div>
         </div>
     )
 };
 
-export default Showcase;
+const mapStateToProps = state => {
+    return {
+        seasonVsHistory: state.seasonVsHistory,
+    }
+};
+
+export default connect(mapStateToProps)(Showcase);

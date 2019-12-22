@@ -1,10 +1,10 @@
 const initialState = {
-    currentTeam: '',
+    currentTeam: 'PHI',
     wins: [],
     losses: [],
     season: '2015',
     year: '',
-    seasonVsHistory: false,
+    seasonVsHistory: true,
     history: [],
     teams: []
 };

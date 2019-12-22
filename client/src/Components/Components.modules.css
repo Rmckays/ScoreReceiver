@@ -16,6 +16,7 @@
 
 .d-flex {
     display: flex;
+    flex-direction: column;
 }
 
 .justify-content-center {
@@ -39,7 +40,11 @@
 }
 
 .mt-1 {
-    margin-top: 20vh;
+    margin-top: 15vh;
+}
+
+.mt-2 {
+    margin-top: 5vh;
 }
 
 .bg-white {

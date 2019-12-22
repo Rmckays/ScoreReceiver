@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
+import Container from '@material-ui/core/Container';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
@@ -38,7 +38,7 @@ const DenseTable = props => {
   }, []);
 
   return (
-      <TableContainer component={Paper}>
+      <Container component={Paper} className='mt-2'>
           <Table className={classes.table} size="small" aria-label="a dense table">
               <TableHead>
                   <TableRow>
@@ -79,7 +79,7 @@ const DenseTable = props => {
                   ))}
               </TableBody>
           </Table>
-      </TableContainer>
+      </Container>
   );
 };
 
@@ -91,6 +91,7 @@ const mapStateToProps = state => {
         seasonVsHistory: state.seasonVsHistory,
         year: state.year,
         wins: state.wins,
+        losses: state.losses,
         history: state.history
     }
 };
