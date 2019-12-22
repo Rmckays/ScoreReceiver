@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import agent from '../API/agent';
 import {connect} from "react-redux";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import axios from "axios";
 import * as dispatchState from "../Stores/actionTypes";
 
 const SearchInput = (props) => {

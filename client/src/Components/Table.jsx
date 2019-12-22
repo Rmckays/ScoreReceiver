@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {connect} from "react-redux";
 import agent from "../API/agent";
+import * as dispatchState from '../Stores/actionTypes';
 
 const useStyles = makeStyles({
   table: {
@@ -31,7 +32,8 @@ const DenseTable = props => {
       agent.getStats.getTeamSeason(props.currentTeam, props.season)
           .then(response => {
               console.log(response);
-
+              props.loadTeamWins(response.wins);
+              props.loadTeamLosses(response.losses);
         })
   }, []);
 
@@ -95,8 +97,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-      loadSeason: games => {
-        dispatch();
+      loadTeamWins: games => {
+        dispatch({type: dispatchState.loadTeamWins, val: games});
+      },
+      loadTeamLosses: games => {
+        dispatch({type: dispatchState.loadTeamLosses, val: games})
       }
     }
 }

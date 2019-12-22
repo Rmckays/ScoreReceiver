@@ -2,7 +2,7 @@ const initialState = {
     currentTeam: '',
     wins: [],
     losses: [],
-    season: '',
+    season: '2015',
     year: '',
     seasonVsHistory: false,
     history: [],

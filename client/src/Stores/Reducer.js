@@ -12,12 +12,28 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 teams: [...newTeams]
             };
+
         case dispatchState.teamChange:
             return {
                 ...state,
                 currentTeam: action.val
-            }
+            };
 
+        case dispatchState.loadTeamWins:
+            const teamWins = [...action.val];
+
+            return {
+                ...state,
+                wins: [...teamWins]
+            };
+
+        case dispatchState.loadTeamLosses:
+            const teamLosses = [...action.val];
+
+            return {
+                ...state,
+                losses: [...teamLosses]
+            };
     }
     console.log(state);
     return state;
