@@ -12,7 +12,8 @@ const SearchInput = (props) => {
         agent.teams.getTeams()
             .then(response => {
                 console.log(response.teams);
-                props.loadTeams(response.teams);})
+                props.loadTeams(response.teams);
+            })
     }, []);
 
     const handleChange = event => {
