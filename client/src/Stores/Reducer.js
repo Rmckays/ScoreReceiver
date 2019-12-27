@@ -6,11 +6,10 @@ const reducer = (state = initialState, action) => {
 
     switch (action.type) {
         case dispatchState.loadTeams:
-            const newTeams = [...action.val];
 
             return {
                 ...state,
-                teams: [...newTeams]
+                teams: action.val
             };
 
         case dispatchState.teamChange:
@@ -20,19 +19,17 @@ const reducer = (state = initialState, action) => {
             };
 
         case dispatchState.loadTeamWins:
-            const teamWins = [...action.val];
 
             return {
                 ...state,
-                wins: [...teamWins]
+                wins: action.val
             };
 
         case dispatchState.loadTeamLosses:
-            const teamLosses = [...action.val];
 
             return {
                 ...state,
-                losses: [...teamLosses]
+                losses: action.val
             };
 
         case dispatchState.toggleHistory:
@@ -45,11 +42,12 @@ const reducer = (state = initialState, action) => {
 
         case dispatchState.showTable:
             return{
-                state,
+                ...state,
                 showTable: action.val
             };
 
         case dispatchState.searchTeam:
+
 
     }
     console.log(state);

@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {connect} from "react-redux";
+import axios from 'axios';
 import agent from "../API/agent";
 import * as dispatchState from '../Stores/actionTypes';
 
@@ -17,25 +18,26 @@ const useStyles = makeStyles({
   },
 });
 
-// function createData(date, season, homeTeam, homeScore, awayTeam, awayScore) {
-//   return { date, season, homeTeam, homeScore, awayTeam, awayScore };
-// }
-//
-// const rows = [
-//   createData()
-// ];
-
 const DenseTable = props => {
   const classes = useStyles();
 
   useEffect(() => {
-      agent.getStats.getTeamSeason(props.currentTeam, props.season)
-          .then(response => {
-              console.log(response);
-              props.loadTeamWins(response.wins);
-              props.loadTeamLosses(response.losses);
-        })
-  }, []);
+      // if(props.seasonVsHistory) {
+      //     agent.getStats.getTeamHistory(props.currentTeam, props.year)
+      //           .then(response => {
+      //               console.log(response);
+      //               props.loadTeamWins(response.wins);
+      //               props.loadTeamLosses(response.losses);
+      //           })
+      // } else {
+          agent.getStats.getTeamSeason(props.currentTeam, props.season)
+              .then(response => {
+                  console.log(response);
+                  props.loadTeamWins(response.wins);
+                  props.loadTeamLosses(response.losses);
+              })
+      // }
+  }, [props.currentTeam]);
 
   return (
       <Container component={Paper} className='mt-2'>
@@ -88,11 +90,11 @@ const mapStateToProps = state => {
         teams: state.teams,
         currentTeam: state.currentTeam,
         season: state.season,
-        seasonVsHistory: state.seasonVsHistory,
+        seasonOrHistory: state.seasonOrHistory,
         year: state.year,
         wins: state.wins,
         losses: state.losses,
-        history: state.history
+        history: state.history,
     }
 };
 
@@ -105,6 +107,6 @@ const mapDispatchToProps = dispatch => {
         dispatch({type: dispatchState.loadTeamLosses, val: games})
       }
     }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DenseTable);
