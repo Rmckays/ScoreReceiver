@@ -3,7 +3,7 @@ const initialState = {
     wins: [],
     losses: [],
     season: '2015',
-    year: '2015',
+    year: '2013',
     seasonOrHistory: false,
     history: [],
     teams: [],

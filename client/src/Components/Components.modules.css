@@ -32,6 +32,11 @@
     align-items: center;
 }
 
+.scrollY {
+    overflow-y: auto;
+    max-height: 40vh;
+}
+
 .pt-1 {
     padding-top: 25rem;
 }

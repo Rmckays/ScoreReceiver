@@ -22,25 +22,25 @@ const DenseTable = props => {
   const classes = useStyles();
 
   useEffect(() => {
-      // if(props.seasonVsHistory) {
-      //     agent.getStats.getTeamHistory(props.currentTeam, props.year)
-      //           .then(response => {
-      //               console.log(response);
-      //               props.loadTeamWins(response.wins);
-      //               props.loadTeamLosses(response.losses);
-      //           })
-      // } else {
+      if(props.seasonOrHistory) {
+          agent.getStats.getTeamHistory(props.currentTeam, props.year)
+                .then(response => {
+                    console.log(response);
+                    props.loadTeamWins(response.wins);
+                    props.loadTeamLosses(response.losses);
+                })
+      } else {
           agent.getStats.getTeamSeason(props.currentTeam, props.season)
               .then(response => {
                   console.log(response);
                   props.loadTeamWins(response.wins);
                   props.loadTeamLosses(response.losses);
               })
-      // }
+      }
   }, [props.currentTeam]);
 
   return (
-      <Container component={Paper} className='mt-2'>
+      <Container component={Paper} className='mt-2 scrollY'>
           <Table className={classes.table} size="small" aria-label="a dense table">
               <TableHead>
                   <TableRow>
