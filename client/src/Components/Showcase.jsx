@@ -4,7 +4,7 @@ import DenseTable from "./Table";
 import {connect} from "react-redux";
 
 const Showcase = (props) => {
-    const showTable = (props.seasonVsHistory) ? <DenseTable/> : null;
+    const showTable = (props.showTable) ? <DenseTable/> : null;
 
     return (
         <div className="backdrop">
@@ -22,6 +22,7 @@ const Showcase = (props) => {
 const mapStateToProps = state => {
     return {
         seasonVsHistory: state.seasonVsHistory,
+        showTable: state.showTable
     }
 };
 

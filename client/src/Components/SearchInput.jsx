@@ -7,6 +7,8 @@ import * as dispatchState from "../Stores/actionTypes";
 import {getTeamName} from '../Util/teamNames';
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import {NavLink} from "react-router-dom";
+import {Button} from "@material-ui/core";
 
 const SearchInput = (props) => {
 
@@ -27,6 +29,17 @@ const SearchInput = (props) => {
         props.changeToHistory(event);
     };
 
+    const handleSearchTeam = () => {
+        props.showTable(true);
+
+        if(props.seasonVsHistory){
+            agent.getStats.getTeamHistory(props.currentTeam, props.year)
+                .then()
+        }else{
+
+        }
+    }
+
     const teamList = props.teams.map(team => {
         return(
             <MenuItem value={team}>{team} - {getTeamName(team)}</MenuItem>
@@ -46,7 +59,7 @@ const SearchInput = (props) => {
                     {teamList}
                 </Select>
                 <FormControlLabel
-                    color="white"
+                    className="text-white"
                     control={
                         <Switch
                             className="text-white ml-1"
@@ -58,6 +71,7 @@ const SearchInput = (props) => {
                     }
                     label="Historical"
                 />
+                <Button onClick={handleSearchTeam} variant='contained' className='no-underline color-main'>Search</Button>
             </div>
         </div>
     )
@@ -70,7 +84,8 @@ const mapStateToProps = state => {
         currentTeam: state.currentTeam,
         wins: state.wins,
         history: state.history,
-        seasonVsHistory: state.seasonOrHistory
+        seasonVsHistory: state.seasonOrHistory,
+        showTable: state.showTable
     }
 };
 
@@ -86,6 +101,12 @@ const mapDispatchToProps = dispatch => {
             console.log(event.target.checked);
             console.log(!event.target.checked);
             dispatch({type: dispatchState.toggleHistory, val: event.target.checked})
+        },
+        searchTeam: teamData => {
+            dispatch({type: dispatchState.searchTeam, val: teamData});
+        },
+        showTable: value => {
+            dispatch({type: dispatchState.showTable, val: value});
         }
     }
 };

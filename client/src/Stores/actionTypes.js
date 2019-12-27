@@ -11,3 +11,7 @@ export const loadTeamWins = 'LOADTEAMWINS';
 export const loadTeamLosses = 'LOADTEAMLOSSES';
 
 export const toggleHistory = 'TOGGLEHISTORY';
+
+export const searchTeam = 'SEARCHTEAM';
+
+export const showTable = 'SHOWTABLE';
