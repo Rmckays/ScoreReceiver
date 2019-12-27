@@ -9,3 +9,5 @@ export const loadTeams = 'LOADTEAMS';
 export const loadTeamWins = 'LOADTEAMWINS';
 
 export const loadTeamLosses = 'LOADTEAMLOSSES';
+
+export const toggleHistory = 'TOGGLEHISTORY';

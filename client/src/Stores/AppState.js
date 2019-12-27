@@ -4,7 +4,7 @@ const initialState = {
     losses: [],
     season: '2015',
     year: '',
-    seasonVsHistory: true,
+    seasonOrHistory: false,
     history: [],
     teams: []
 };

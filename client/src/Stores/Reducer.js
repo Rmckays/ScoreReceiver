@@ -34,6 +34,14 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 losses: [...teamLosses]
             };
+
+        case dispatchState.toggleHistory:
+            const toggled = action.val;
+
+            return {
+                ...state,
+                seasonOrHistory: toggled
+            }
     }
     console.log(state);
     return state;
