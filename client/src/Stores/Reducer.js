@@ -46,6 +46,18 @@ const reducer = (state = initialState, action) => {
                 showTable: action.val
             };
 
+        case dispatchState.changeSeason:
+            return {
+                ...state,
+                season: action.val
+            };
+
+        case dispatchState.changeYear:
+            return {
+                ...state,
+                year: action.val
+            };
+
         case dispatchState.searchTeam:
 
 

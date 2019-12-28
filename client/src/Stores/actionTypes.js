@@ -15,3 +15,7 @@ export const toggleHistory = 'TOGGLEHISTORY';
 export const searchTeam = 'SEARCHTEAM';
 
 export const showTable = 'SHOWTABLE';
+
+export const changeYear = "CHANGEYEAR";
+
+export const changeSeason = "CHANGESEASON";

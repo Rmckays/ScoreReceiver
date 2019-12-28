@@ -2,7 +2,7 @@ const initialState = {
     currentTeam: 'ARI',
     wins: [],
     losses: [],
-    season: '2015',
+    season: '2019',
     year: '2013',
     seasonOrHistory: false,
     history: [],

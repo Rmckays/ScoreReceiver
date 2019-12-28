@@ -7,7 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import {getTeamName} from "../Util/teamNames";
 
 
-const SearchBox = props => {
+const TeamSelect = props => {
     useEffect(() => {
         agent.teams.getTeams()
             .then(response => {
@@ -61,4 +61,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBox)
+export default connect(mapStateToProps, mapDispatchToProps)(TeamSelect)

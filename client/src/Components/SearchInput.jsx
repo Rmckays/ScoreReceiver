@@ -5,7 +5,7 @@ import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import {Button} from "@material-ui/core";
 import agent from "../API/agent";
-import SearchBox from "./SearchBox";
+import SearchBox from "./TeamSelect";
 
 const SearchInput = (props) => {
 
