@@ -4,8 +4,8 @@ import * as dispatchState from "../Stores/actionTypes";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import {Button} from "@material-ui/core";
-import agent from "../API/agent";
-import SearchBox from "./TeamSelect";
+import TeamSelect from "./TeamSelect";
+import YearSelect from "./YearSelect";
 
 const SearchInput = (props) => {
 
@@ -21,7 +21,8 @@ const SearchInput = (props) => {
         <div className='searchInput mt-1 '>
             <p className="text-white f-1">Please select a NFL Team to search.</p>
             <div className="r-flex">
-                <SearchBox />
+                <TeamSelect />
+                <YearSelect/>
                 <FormControlLabel
                     className="text-white"
                     control={

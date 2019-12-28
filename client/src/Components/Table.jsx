@@ -8,7 +8,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {connect} from "react-redux";
-import axios from 'axios';
 import agent from "../API/agent";
 import * as dispatchState from '../Stores/actionTypes';
 
@@ -37,7 +36,7 @@ const DenseTable = props => {
                   props.loadTeamLosses(response.losses);
               })
       }
-  }, [props.currentTeam]);
+  }, [props.currentTeam, props.season, props.year]);
 
   return (
       <Container component={Paper} className='mt-2 scrollY'>

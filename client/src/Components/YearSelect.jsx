@@ -27,7 +27,7 @@ const YearSelect = props => {
 
     return (
         <Select
-            className="bg-white w-2"
+            className="bg-white w-2 ml-1"
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             onChange={handleChange}
