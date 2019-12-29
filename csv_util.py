@@ -12,7 +12,7 @@ def get_games_history(name, season):
         next(csv_reader)
 
         for line in csv_reader:
-            if int(line[1]) > int(season) and (line[4] == name.upper() or line[5] == name.upper()):
+            if int(line[1]) >= int(season) and (line[4] == name.upper() or line[5] == name.upper()):
                 if line[4] == name.upper() and line[9] > line[10]:
                     data['wins'].append(line)
                 elif line[5] == name.upper() and line[10] > line[9]:
