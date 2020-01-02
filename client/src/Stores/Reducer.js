@@ -18,19 +18,12 @@ const reducer = (state = initialState, action) => {
                 currentTeam: action.val
             };
 
-        case dispatchState.loadTeamWins:
+        case dispatchState.loadGames:
 
             return {
                 ...state,
-                wins: action.val
-            };
-
-        case dispatchState.loadTeamLosses:
-
-            return {
-                ...state,
-                losses: action.val
-            };
+                games: action.val
+            }
 
         case dispatchState.toggleHistory:
             const toggled = action.val;
