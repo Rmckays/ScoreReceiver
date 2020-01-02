@@ -36,7 +36,7 @@ const DenseTable = props => {
                   props.loadTeamLosses(response.losses);
               })
       }
-  }, [props.currentTeam, props.season, props.year]);
+  }, [props.currentTeam, props.season, props.year, props.seasonOrHistory]);
 
   return (
       <Container component={Paper} className='mt-2 scrollY'>

@@ -4,12 +4,14 @@ import Showcase from "../../Components/Showcase";
 import Navigation from "../../Components/Navigation";
 import Footer from "../../Components/Footer";
 import Greeting from "../../Components/Greeting";
+import ChartWrapper from "../../Components/ChartWrapper";
 
 const HomePage = props => {
 
     return (
         <>
-            <Showcase childComp={<Greeting/>}/>
+            <ChartWrapper/>
+            {/*<Showcase childComp={<Greeting/>}/>*/}
             <Navigation />
             <Footer/>
         </>

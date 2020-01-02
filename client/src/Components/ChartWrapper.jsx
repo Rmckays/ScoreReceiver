@@ -1,17 +1,20 @@
-import React, {useEffect, useRef} from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import D3Chart from '../D3/D3Chart';
 
-const ChartWrapper = props => {
-    const container = useRef('chart');
+class ChartWrapper extends Component{
 
-    useEffect(() => {
-        new D3Chart(container)
-    }, []);
+    componentDidMount() {
+        new D3Chart(this.refs.chart)
+    }
 
-    return (
-      <div ref="chart"></div>
-    );
+    render() {
+        return (
+            <div ref="chart"></div>
+        );
+    }
+
+
 };
 
 const mapStateToProps = state => {
