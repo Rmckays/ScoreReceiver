@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import {connect} from "react-redux";
 import agent from "../API/agent";
 import * as dispatchState from '../Stores/actionTypes';
+import ChartModal from "./Modal";
 
 const useStyles = makeStyles({
   table: {
@@ -37,35 +38,38 @@ const DenseTable = props => {
   }, [props.currentTeam, props.season, props.year, props.seasonOrHistory]);
 
   return (
-      <Container component={Paper} className='mt-2 scrollY'>
-          <Table className={classes.table} size="small" aria-label="a dense table">
-              <TableHead>
-                  <TableRow>
-                      <TableCell>Date</TableCell>
-                      <TableCell align="right">Season</TableCell>
-                      <TableCell align="right">Home Team</TableCell>
-                      <TableCell align="right">Score</TableCell>
-                      <TableCell align="right">Away Team</TableCell>
-                      <TableCell align="right">Score</TableCell>
-                      <TableCell align="right">Result</TableCell>
-                  </TableRow>
-              </TableHead>
-              <TableBody>
-                  {props.games.map(row => (
-                      <TableRow key={row[0]}>
-                          <TableCell component="th" scope="row">
-                            {row.date}
-                          </TableCell>
-                          <TableCell align="right">{row.season}</TableCell>
-                          <TableCell align="right">{row.home_team}</TableCell>
-                          <TableCell align="right">{row.home_score}</TableCell>
-                          <TableCell align="right">{row.away_team}</TableCell>
-                          <TableCell align="right">{row.away_score}</TableCell>
-                          <TableCell align="right">{row.result}</TableCell>
+      <Container>
+          <Container component={Paper} className='mt-2 scrollY'>
+              <Table className={classes.table} size="small" aria-label="a dense table">
+                  <TableHead>
+                      <TableRow>
+                          <TableCell>Date</TableCell>
+                          <TableCell align="right">Season</TableCell>
+                          <TableCell align="right">Home Team</TableCell>
+                          <TableCell align="right">Score</TableCell>
+                          <TableCell align="right">Away Team</TableCell>
+                          <TableCell align="right">Score</TableCell>
+                          <TableCell align="right">Result</TableCell>
                       </TableRow>
-                  ))}
-              </TableBody>
-          </Table>
+                  </TableHead>
+                  <TableBody>
+                      {props.games.map(row => (
+                          <TableRow key={row[0]}>
+                              <TableCell component="th" scope="row">
+                                {row.date}
+                              </TableCell>
+                              <TableCell align="right">{row.season}</TableCell>
+                              <TableCell align="right">{row.home_team}</TableCell>
+                              <TableCell align="right">{row.home_score}</TableCell>
+                              <TableCell align="right">{row.away_team}</TableCell>
+                              <TableCell align="right">{row.away_score}</TableCell>
+                              <TableCell align="right">{row.result}</TableCell>
+                          </TableRow>
+                      ))}
+                  </TableBody>
+              </Table>
+          </Container>
+          <ChartModal />
       </Container>
   );
 };
