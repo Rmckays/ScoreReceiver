@@ -25,15 +25,13 @@ const DenseTable = props => {
           agent.getStats.getTeamHistory(props.currentTeam, props.year)
                 .then(response => {
                     console.log(response);
-                    props.loadTeamWins(response.wins);
-                    props.loadTeamLosses(response.losses);
+                    props.loadGames(response.games);
                 })
       } else {
           agent.getStats.getTeamSeason(props.currentTeam, props.season)
               .then(response => {
                   console.log(response);
-                  props.loadTeamWins(response.wins);
-                  props.loadTeamLosses(response.losses);
+                  props.loadGames(response.games);
               })
       }
   }, [props.currentTeam, props.season, props.year, props.seasonOrHistory]);
@@ -49,33 +47,21 @@ const DenseTable = props => {
                       <TableCell align="right">Score</TableCell>
                       <TableCell align="right">Away Team</TableCell>
                       <TableCell align="right">Score</TableCell>
+                      <TableCell align="right">Result</TableCell>
                   </TableRow>
               </TableHead>
               <TableBody>
-                  {props.wins.map(row => (
+                  {props.games.map(row => (
                       <TableRow key={row[0]}>
                           <TableCell component="th" scope="row">
-                            {row[0]}
+                            {row.date}
                           </TableCell>
-                          <TableCell align="right">{row[1]}</TableCell>
-                          <TableCell align="right">{row[4]}</TableCell>
-                          <TableCell align="right">{row[9]}</TableCell>
-                          <TableCell align="right">{row[5]}</TableCell>
-                          <TableCell align="right">{row[10]}</TableCell>
-                          <TableCell align="right">Win</TableCell>
-                      </TableRow>
-                  ))}
-                  {props.losses.map(row => (
-                      <TableRow key={row[0]}>
-                          <TableCell component="th" scope="row">
-                            {row[0]}
-                          </TableCell>
-                          <TableCell align="right">{row[1]}</TableCell>
-                          <TableCell align="right">{row[4]}</TableCell>
-                          <TableCell align="right">{row[9]}</TableCell>
-                          <TableCell align="right">{row[5]}</TableCell>
-                          <TableCell align="right">{row[10]}</TableCell>
-                          <TableCell align="right">Loss</TableCell>
+                          <TableCell align="right">{row.season}</TableCell>
+                          <TableCell align="right">{row.home_team}</TableCell>
+                          <TableCell align="right">{row.home_score}</TableCell>
+                          <TableCell align="right">{row.away_team}</TableCell>
+                          <TableCell align="right">{row.away_score}</TableCell>
+                          <TableCell align="right">{row.result}</TableCell>
                       </TableRow>
                   ))}
               </TableBody>
@@ -91,19 +77,15 @@ const mapStateToProps = state => {
         season: state.season,
         seasonOrHistory: state.seasonOrHistory,
         year: state.year,
-        wins: state.wins,
-        losses: state.losses,
         history: state.history,
+        games: state.games
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-      loadTeamWins: games => {
-        dispatch({type: dispatchState.loadTeamWins, val: games});
-      },
-      loadTeamLosses: games => {
-        dispatch({type: dispatchState.loadTeamLosses, val: games})
+      loadGames: games => {
+          dispatch({type: dispatchState.loadGames, val: games})
       }
     }
 };

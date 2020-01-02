@@ -6,9 +6,7 @@ export const historyChange = 'HISTORYCHANGE';
 
 export const loadTeams = 'LOADTEAMS';
 
-export const loadTeamWins = 'LOADTEAMWINS';
-
-export const loadTeamLosses = 'LOADTEAMLOSSES';
+export const loadGames = "LOADGAMES";
 
 export const toggleHistory = 'TOGGLEHISTORY';
 
