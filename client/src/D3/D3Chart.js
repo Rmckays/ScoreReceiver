@@ -1,26 +1,32 @@
 import * as d3 from 'd3';
 
+const HEIGHT = 500;
+const WIDTH = 1000;
+
 export default class D3Chart {
     constructor(element, data, currentTeam) {
         const svg = d3.select(element)
             .append("svg")
-            .attr("width", 1000)
-            .attr("height", 500);
+            .attr("width", WIDTH)
+            .attr("height", HEIGHT);
 
-        // svg.append("rect")
-        //     .attr("x", 50)
-        //     .attr("y", 50)
-        //     .attr("width", 100)
-        //     .attr("height", 300)
-        //     .attr("fill", "grey");
+        const maxAway = d3.max(data, d => {
+            return parseInt(d.away_score);
+        });
+
+        const maxHome = d3.max(data, d => {
+            return parseInt(d.home_score);
+        });
+
+        const absMax = (maxAway > maxHome) ?  maxAway : maxHome;
 
         const y = d3.scaleLinear()
-            .domain([0, 50])
-            .range([0, 500]);
+            .domain([0, absMax])
+            .range([0, HEIGHT]);
 
         const x = d3.scaleBand()
             .domain(data.map(game => game.date))
-            .range([0, 900])
+            .range([0, WIDTH])
             .padding(0.25);
 
         const rects = svg.selectAll("rect")
@@ -28,7 +34,13 @@ export default class D3Chart {
 
         rects.enter().append("rect")
             .attr("x", d => x(d.date))
-            .attr("y", 100)
+            .attr("y", d => {
+                if(d.home_team === currentTeam){
+                    return HEIGHT - y(d.home_score)
+                } else {
+                    return HEIGHT - y(d.away_score)
+                }
+            })
             .attr("width", x.bandwidth)
             .attr("height", d => {
                 if(d.home_team === currentTeam){
