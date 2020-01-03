@@ -5,7 +5,7 @@ import D3Chart from '../D3/D3Chart';
 class ChartWrapper extends Component{
 
     componentDidMount() {
-        new D3Chart(this.refs.chart)
+        new D3Chart(this.refs.chart, this.props.games, this.props.currentTeam)
     }
 
     render() {
@@ -18,6 +18,10 @@ class ChartWrapper extends Component{
 };
 
 const mapStateToProps = state => {
+    return{
+        games: state.games,
+        currentTeam: state.currentTeam
+    }
 
 };
 
