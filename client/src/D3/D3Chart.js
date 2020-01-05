@@ -27,13 +27,7 @@ export default class D3Chart {
             .domain([0, absMax])
             .range([HEIGHT, 0]);
 
-        // const x = d3.scaleBand()
-        //     .domain(data.map(game => game.date))
-        //     .range([0, WIDTH])
-        //     .padding(0.4);
-
         const x = d3.scaleTime()
-            // .domain([Date(data[0].date), Date(data[data.length -1].date)])
             .domain(d3.extent(data, d => new Date(d.date)))
             .range([0, WIDTH]);
 
@@ -71,7 +65,7 @@ export default class D3Chart {
                 } else {
                     return y(d.away_score)
                 }
-            })
+            });
 
         const lineOpposeTeam = d3.line()
             .x(d => x(new Date(d.date)))
@@ -81,7 +75,7 @@ export default class D3Chart {
                 } else {
                     return y(d.away_score)
                 }
-            })
+            });
 
         const circles = svg.selectAll("circle")
             .data(data);
@@ -120,41 +114,12 @@ export default class D3Chart {
                     return y(d.away_score)
                 }
             })
-            .attr("fill", "red")
+            .attr("fill", "red");
 
         opposePath.data([data])
             .attr("fill", "none")
             .attr("stroke", "red")
             .attr("stroke-width", 2)
             .attr('d', lineOpposeTeam);
-
-        // const rects = svg.selectAll("rect")
-        //     .data(data);
-        //
-        // rects.enter().append("rect")
-        //     .attr("x", d => x(d.date))
-        //     .attr("y", d => {
-        //         if(d.home_team === currentTeam){
-        //             return y(d.home_score)
-        //         } else {
-        //             return y(d.away_score)
-        //         }
-        //     })
-        //     .attr("width", x.bandwidth)
-        //     .attr("height", d => {
-        //         if(d.home_team === currentTeam){
-        //             return HEIGHT - y(d.home_score);
-        //         } else {
-        //             return HEIGHT - y(d.away_score);
-        //         }
-        //         })
-        //     .attr("fill", d => {
-        //         if(d.result === "Win"){
-        //             return "green";
-        //         } else {
-        //             return "#333";
-        //         }
-        //     })
-
     }
 }
