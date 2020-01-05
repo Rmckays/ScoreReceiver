@@ -7,7 +7,7 @@ const Showcase = (props) => {
     const showTable = (props.showTable) ? <DenseTable/> : null;
 
     return (
-        <div className="backdrop">
+        <div className="showcase">
             <div className='d-flex justify-content-center align-items-center'>
                 <div className="showcaseChild">
                     {props.childComp}

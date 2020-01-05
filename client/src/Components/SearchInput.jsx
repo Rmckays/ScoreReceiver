@@ -19,15 +19,14 @@ const SearchInput = (props) => {
 
     return (
         <div className='searchInput mt-1 '>
-            <p className="text-white f-1">Please select a NFL Team to search.</p>
+            <p className="f-1">Please select a NFL Team to search.</p>
             <div className="r-flex">
                 <TeamSelect />
                 <YearSelect/>
                 <FormControlLabel
-                    className="text-white"
                     control={
                         <Switch
-                            className="text-white ml-1"
+                            className=" ml-1"
                             checked={props.seasonVsHistory}
                             onClick={handleChangeToHistory}
                             // value="checkedB"

@@ -5,6 +5,8 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import {Button} from "@material-ui/core";
 import ChartWrapper from "./ChartWrapper";
+import {connect} from "react-redux";
+import {getTeamName} from "../Util/teamNames";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -52,12 +54,22 @@ const ChartModal = props => {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Team Stats</h2>
+            <div>
+                <div><div className="legend-box bg-green"></div><div>{props.currentTeam} - {getTeamName(props.currentTeam)}</div></div>
+              <div><div className="legend-box bg-red"></div><div>Opposition</div></div>
+            </div>
             <ChartWrapper />
           </div>
         </Fade>
       </Modal>
     </div>
   );
-}
+};
+const mapStateToProps = state => {
+    return {
+        currentTeam: state.currentTeam,
+    }
+};
 
-export default ChartModal;
+
+export default connect(mapStateToProps)(ChartModal);

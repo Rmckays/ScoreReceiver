@@ -1,7 +1,21 @@
+body {
+    background-color: #3F51B5;
+}
+
 .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     background: url("../img/featured.jpg") center center/cover;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.showcase {
+    width: 100vw;
+    height: 100vh;
 }
 
 #footer {
@@ -71,6 +85,23 @@
 
 .bg-white {
     background-color: white;
+}
+
+.legend-box {
+    width: 10px;
+    height: 10px;
+}
+
+.i-block {
+    display: inline-block;
+}
+
+.bg-green {
+    background-color: green;
+}
+
+.bg-red {
+    background-color: red;
 }
 
 .header-1 {
