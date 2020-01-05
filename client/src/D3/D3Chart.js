@@ -63,8 +63,32 @@ export default class D3Chart {
             .text("Points")
             .attr("transform", "rotate(-90)");
 
+        const lineCurrentTeam = d3.line()
+            .x(d => x(new Date(d.date)))
+            .y(d => {
+                if (d.home_team === currentTeam) {
+                    return y(d.home_score)
+                } else {
+                    return y(d.away_score)
+                }
+            })
+
+        const lineOpposeTeam = d3.line()
+            .x(d => x(new Date(d.date)))
+            .y(d => {
+                if (d.home_team !== currentTeam) {
+                    return y(d.home_score)
+                } else {
+                    return y(d.away_score)
+                }
+            })
+
         const circles = svg.selectAll("circle")
             .data(data);
+
+        const teamPath = svg.append("path");
+
+        const opposePath = svg.append("path");
 
         circles.exit().remove();
 
@@ -80,6 +104,12 @@ export default class D3Chart {
             })
             .attr("fill", "green");
 
+        teamPath.data([data])
+            .attr("fill", "none")
+            .attr("stroke", "green")
+            .attr("stroke-width", 2)
+            .attr('d', lineCurrentTeam);
+
         circles.enter().append("circle")
             .attr("r", 4)
             .attr("cx", d => x(new Date(d.date)))
@@ -91,6 +121,12 @@ export default class D3Chart {
                 }
             })
             .attr("fill", "red")
+
+        opposePath.data([data])
+            .attr("fill", "none")
+            .attr("stroke", "red")
+            .attr("stroke-width", 2)
+            .attr('d', lineOpposeTeam);
 
         // const rects = svg.selectAll("rect")
         //     .data(data);
