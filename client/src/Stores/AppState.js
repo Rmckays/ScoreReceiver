@@ -1,8 +1,8 @@
 const initialState = {
-    currentTeam: 'ARI',
+    currentTeam: '',
     games: [],
-    season: '2019',
-    year: '2013',
+    season: '',
+    year: '',
     seasonOrHistory: false,
     history: [],
     teams: [],
