@@ -17,3 +17,5 @@ export const showTable = 'SHOWTABLE';
 export const changeYear = "CHANGEYEAR";
 
 export const changeSeason = "CHANGESEASON";
+
+export const resetShowTable = "RESETSHOWTABLE";

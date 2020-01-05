@@ -51,6 +51,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 year: action.val
             };
+
+        case dispatchState.resetShowTable:
+            return {
+                ...state,
+                showTable: action.val
+            }
     }
     return state;
 };
