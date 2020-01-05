@@ -13,8 +13,6 @@ class ChartWrapper extends Component{
             <div ref="chart"></div>
         );
     }
-
-
 };
 
 const mapStateToProps = state => {
@@ -25,8 +23,4 @@ const mapStateToProps = state => {
 
 };
 
-const mapDispatchToProps = dispatch => {
-
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ChartWrapper);
+export default connect(mapStateToProps)(ChartWrapper);

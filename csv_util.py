@@ -13,7 +13,7 @@ def get_games_history(name, season):
         for line in csv_reader:
             if int(line[1]) >= int(season) and (line[4] == name.upper() or line[5] == name.upper()):
                 game = {'date': '', 'season': '', 'home_team': '', 'away_team': '', 'home_score': 0, 'away_score': 0, 'result': ''}
-                if line[4] == name.upper() and line[9] > line[10]:
+                if line[4] == name.upper() and (int(line[9]) > int(line[10])):
                     game['date'] = line[0]
                     game['season'] = line[1]
                     game['home_team'] = line[4]
@@ -22,7 +22,7 @@ def get_games_history(name, season):
                     game['away_score'] = line[10]
                     game['result'] = 'Win'
                     data['games'].append(game)
-                elif line[5] == name.upper() and line[10] > line[9]:
+                elif line[5] == name.upper() and (int(line[10]) > int(line[9])):
                     game['date'] = line[0]
                     game['season'] = line[1]
                     game['home_team'] = line[4]
@@ -55,7 +55,7 @@ def get_games_season(name, season):
         for line in csv_reader:
             if int(line[1]) == int(season) and (line[4] == name.upper() or line[5] == name.upper()):
                 game = {'date': '', 'season': '', 'home_team': '', 'away_team': '', 'home_score': 0, 'away_score': 0, 'result': ''}
-                if line[4] == name.upper() and line[9] > line[10]:
+                if line[4] == name.upper() and (int(line[9]) > int(line[10])):
                     game['date'] = line[0]
                     game['season'] = line[1]
                     game['home_team'] = line[4]
@@ -64,7 +64,7 @@ def get_games_season(name, season):
                     game['away_score'] = line[10]
                     game['result'] = 'Win'
                     data['games'].append(game)
-                elif line[5] == name.upper() and line[10] > line[9]:
+                elif line[5] == name.upper() and (int(line[10]) > int(line[9])):
                     game['date'] = line[0]
                     game['season'] = line[1]
                     game['home_team'] = line[4]

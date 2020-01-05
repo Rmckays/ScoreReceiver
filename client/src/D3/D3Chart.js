@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 
-const MARGINS = {top: 10, right: 20, left: 20, bottom: 20};
+const MARGINS = {top: 10, right: 20, left: 35, bottom: 70};
 const HEIGHT = 500 - MARGINS.left - MARGINS.right;
 const WIDTH = 1000 - MARGINS.top - MARGINS.bottom;
 
@@ -27,46 +27,96 @@ export default class D3Chart {
             .domain([0, absMax])
             .range([HEIGHT, 0]);
 
-        const x = d3.scaleBand()
-            .domain(data.map(game => game.date))
-            .range([0, WIDTH])
-            .padding(0.4);
+        // const x = d3.scaleBand()
+        //     .domain(data.map(game => game.date))
+        //     .range([0, WIDTH])
+        //     .padding(0.4);
 
-        const xAxisCall = d3.axisBottom(x);
+        const x = d3.scaleTime()
+            // .domain([Date(data[0].date), Date(data[data.length -1].date)])
+            .domain(d3.extent(data, d => new Date(d.date)))
+            .range([0, WIDTH]);
+
+        const xAxisCall = d3.axisBottom(x)
+            .tickFormat(d3.timeFormat("%b %d %y"));
+
         svg.append("g")
-            .attr("transform", `translate(0, ${HEIGHT})`).call(xAxisCall);
+            .attr("transform", `translate(0, ${HEIGHT})`)
+            .call(xAxisCall)
+            .selectAll("text")
+            .attr("transform", "rotate(-45)")
+            .attr("text-anchor", "end");
 
         const yAxisCall = d3.axisLeft(y);
         svg.append("g").call(yAxisCall);
 
+        svg.append("text")
+            .attr("x", WIDTH/2)
+            .attr("y", HEIGHT + 60)
+            .attr("text-anchor", "middle")
+            .text("Game Dates");
 
-        const rects = svg.selectAll("rect")
+        svg.append("text")
+            .attr("x", - (HEIGHT / 2))
+            .attr("y", - 25)
+            .attr("text-anchor", "middle")
+            .text("Points")
+            .attr("transform", "rotate(-90)");
+
+        const circles = svg.selectAll("circle")
             .data(data);
 
-        rects.enter().append("rect")
-            .attr("x", d => x(d.date))
-            .attr("y", d => {
+        circles.enter().append("circle")
+            .attr("r", 4)
+            .attr("cx", d => x(new Date(d.date)))
+            .attr("cy", d => {
                 if(d.home_team === currentTeam){
                     return y(d.home_score)
                 } else {
                     return y(d.away_score)
                 }
             })
-            .attr("width", x.bandwidth)
-            .attr("height", d => {
-                if(d.home_team === currentTeam){
-                    return HEIGHT - y(d.home_score);
+            .attr("fill", "green")
+
+        circles.enter().append("circle")
+            .attr("r", 4)
+            .attr("cx", d => x(new Date(d.date)))
+            .attr("cy", d => {
+                if(d.home_team !== currentTeam){
+                    return y(d.home_score)
                 } else {
-                    return HEIGHT - y(d.away_score);
-                }
-                })
-            .attr("fill", d => {
-                if(d.result === "Win"){
-                    return "green";
-                } else {
-                    return "#333";
+                    return y(d.away_score)
                 }
             })
+            .attr("fill", "red")
+
+        // const rects = svg.selectAll("rect")
+        //     .data(data);
+        //
+        // rects.enter().append("rect")
+        //     .attr("x", d => x(d.date))
+        //     .attr("y", d => {
+        //         if(d.home_team === currentTeam){
+        //             return y(d.home_score)
+        //         } else {
+        //             return y(d.away_score)
+        //         }
+        //     })
+        //     .attr("width", x.bandwidth)
+        //     .attr("height", d => {
+        //         if(d.home_team === currentTeam){
+        //             return HEIGHT - y(d.home_score);
+        //         } else {
+        //             return HEIGHT - y(d.away_score);
+        //         }
+        //         })
+        //     .attr("fill", d => {
+        //         if(d.result === "Win"){
+        //             return "green";
+        //         } else {
+        //             return "#333";
+        //         }
+        //     })
 
     }
 }
