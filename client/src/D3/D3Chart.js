@@ -66,6 +66,8 @@ export default class D3Chart {
         const circles = svg.selectAll("circle")
             .data(data);
 
+        circles.exit().remove();
+
         circles.enter().append("circle")
             .attr("r", 4)
             .attr("cx", d => x(new Date(d.date)))
@@ -76,7 +78,7 @@ export default class D3Chart {
                     return y(d.away_score)
                 }
             })
-            .attr("fill", "green")
+            .attr("fill", "green");
 
         circles.enter().append("circle")
             .attr("r", 4)

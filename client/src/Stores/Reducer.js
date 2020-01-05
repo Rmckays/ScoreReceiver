@@ -30,7 +30,8 @@ const reducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                seasonOrHistory: toggled
+                seasonOrHistory: toggled,
+                year: state.season
             };
 
         case dispatchState.showTable:
@@ -50,12 +51,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 year: action.val
             };
-
-        case dispatchState.searchTeam:
-
-
     }
-    console.log(state);
     return state;
 };
 

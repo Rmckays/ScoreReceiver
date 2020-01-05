@@ -25,13 +25,11 @@ const DenseTable = props => {
       if(props.seasonOrHistory) {
           agent.getStats.getTeamHistory(props.currentTeam, props.year)
                 .then(response => {
-                    console.log(response);
                     props.loadGames(response.games);
                 })
       } else {
           agent.getStats.getTeamSeason(props.currentTeam, props.season)
               .then(response => {
-                  console.log(response);
                   props.loadGames(response.games);
               })
       }
