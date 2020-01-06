@@ -29,4 +29,4 @@ def get_teams():
 
 print('Starting Flask!')
 
-app.run(port=4000)
+app.run()
