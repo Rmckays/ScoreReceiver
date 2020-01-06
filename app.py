@@ -27,7 +27,6 @@ def get_teams():
     return jsonify(csv_util.get_teams())
 
 
-
 print('Starting Flask!')
 
 app.run(port=4000)
