@@ -5,7 +5,7 @@ def get_games_history(name, season):
     data = {
         'games': [],
     }
-    with open('scores.csv', 'r') as csv_file:
+    with open('https://raw.githubusercontent.com/fivethirtyeight/nfl-elo-game/master/data/nfl_games.csv', 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
 
         next(csv_reader)
@@ -47,7 +47,7 @@ def get_games_season(name, season):
     data = {
         'games': [],
     }
-    with open('scores.csv', 'r') as csv_file:
+    with open('https://raw.githubusercontent.com/fivethirtyeight/nfl-elo-game/master/data/nfl_games.csv', 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
 
         next(csv_reader)
@@ -109,4 +109,6 @@ def return_team_history(name, season):
 def return_season_history(name, season):
     season_history = get_games_season(name, season)
     return season_history
+
+#
 
