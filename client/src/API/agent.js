@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://score-receiver.herokuapp.com/api';
-// axios.defaults.baseURL = 'http://localhost:5000/api';
+
 
 const responseBody = response => response.data;
 
