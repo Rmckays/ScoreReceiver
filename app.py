@@ -12,6 +12,16 @@ def home():
     return render_template('index.html')
 
 
+@app.route('/search')
+def home():
+    return render_template('index.html')
+
+
+@app.route('/about')
+def home():
+    return render_template('index.html')
+
+
 @app.route('/api/history/<string:name>/<string:season>', methods=['GET'])
 def send_scores(name, season):
     return jsonify(csv_util.return_team_history(name, season))
