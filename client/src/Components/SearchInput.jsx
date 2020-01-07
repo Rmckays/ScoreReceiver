@@ -29,7 +29,6 @@ const SearchInput = (props) => {
                             className=" ml-1"
                             checked={props.seasonVsHistory}
                             onClick={handleChangeToHistory}
-                            // value="checkedB"
                             color="primary"
                         />
                     }

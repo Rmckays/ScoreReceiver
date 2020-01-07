@@ -2,8 +2,6 @@ import csv
 import urllib.request
 import io
 
-# url = 'https://raw.githubusercontent.com/fivethirtyeight/nfl-elo-game/master/data/nfl_games.csv'
-# csv_file = urllib.request.urlopen(url)
 
 def get_games_history(name, season):
     data = {
@@ -11,7 +9,6 @@ def get_games_history(name, season):
     }
     url = 'https://raw.githubusercontent.com/fivethirtyeight/nfl-elo-game/master/data/nfl_games.csv'
     csv_file = urllib.request.urlopen(url)
-    # with open('https://raw.githubusercontent.com/fivethirtyeight/nfl-elo-game/master/data/nfl_games.csv', 'r') as csv_file:
     csv_reader = csv.reader(io.TextIOWrapper(csv_file))
 
     next(csv_reader)
@@ -55,7 +52,6 @@ def get_games_season(name, season):
     }
     url = 'https://raw.githubusercontent.com/fivethirtyeight/nfl-elo-game/master/data/nfl_games.csv'
     csv_file = urllib.request.urlopen(url)
-    # with open('https://raw.githubusercontent.com/fivethirtyeight/nfl-elo-game/master/data/nfl_games.csv', 'r') as csv_file:
     csv_reader = csv.reader(io.TextIOWrapper(csv_file))
 
     next(csv_reader)
@@ -100,8 +96,6 @@ def get_teams():
     }
     url = 'https://raw.githubusercontent.com/fivethirtyeight/nfl-elo-game/master/data/nfl_games.csv'
     csv_file = urllib.request.urlopen(url)
-    print(csv_file)
-    # with open('scores.csv', 'r') as csv_file:
     csv_reader = csv.reader(io.TextIOWrapper(csv_file))
     next(csv_reader)
     for line in csv_reader:
