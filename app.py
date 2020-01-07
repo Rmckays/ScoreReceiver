@@ -13,12 +13,12 @@ def home():
 
 
 @app.route('/search')
-def home():
+def search():
     return render_template('index.html')
 
 
 @app.route('/about')
-def home():
+def about():
     return render_template('index.html')
 
 
