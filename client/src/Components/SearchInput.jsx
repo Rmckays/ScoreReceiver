@@ -34,7 +34,7 @@ const SearchInput = (props) => {
                     }
                     label="Historical"
                 />
-                <Button onClick={handleSearchTeam} variant='contained' className='no-underline color-main'>Search</Button>
+                <Button onClick={handleSearchTeam} variant='contained' className='no-underline text-white' color="primary">Search</Button>
             </div>
         </div>
     )

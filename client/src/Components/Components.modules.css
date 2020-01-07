@@ -120,6 +120,10 @@ body {
     color: #3F51B5;
 }
 
+.bg-main {
+    background-color: #3F51B5;
+}
+
 .text-white {
     color: white;
 }
