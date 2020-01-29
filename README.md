@@ -13,6 +13,19 @@ that serves the game data to a React/Redux front-end.  The NFL game data is retr
 ### Instructions
 ---
 
+
+### Technologies & Libraries Used
+---
+*Back-End
+    * Python w/Flask
+*Front-End
+    * React w/Hooks
+    * Redux
+    * Axios
+    * D3
+    * Material-UI
+
+
 ### Author
 ---
 * Rustyn Simmons - Full Stack Software Developer - [Website](https://www.rustynsimmons.com) | [LinkedIn](https://www.linkedin.com/in/rustyn-simmons-851a9253/)
