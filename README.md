@@ -16,9 +16,9 @@ that serves the game data to a React/Redux front-end.  The NFL game data is retr
 
 ### Technologies & Libraries Used
 ---
-*Back-End
+* Back-End
     * Python w/Flask
-*Front-End
+* Front-End
     * React w/Hooks
     * Redux
     * Axios
