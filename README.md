@@ -1,2 +1,6 @@
 # ScoreReceiver
-An App that displays NFL scores for the last 30 years.
+
+###Summary
+Score Receiver allows users to find game data from the NFL for the last 30 years.  The back-end is built using Python Flask with a REST API interface
+that serves the game data to a React/Redux front-end.  The NFL game data is retrieved and read using Python from this Github Repo. 
+https://github.com/fivethirtyeight/nfl-elo-game/blob/master/data/nfl_games.csv
