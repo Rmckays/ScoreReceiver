@@ -9,7 +9,7 @@ const AboutMessage = () => {
             <p className='f-1'>Score Receiver was built using Python Flask and React with Redux.  <br/>All scores are grabbed from a csv file,<br/> formated in python
                 and then served via a REST api. <br/> All state is managed via Redux and all styling is handled with the Material-UI api. <br/> Additionally, all
                 charting is handled with D3.</p>
-            <Button variant='contained'><NavLink className='no-underline bg-main text-white' to='/'>Return Home</NavLink></Button>
+            <Button variant='contained' color="primary"><NavLink className='no-underline text-white' to='/'>Return Home</NavLink></Button>
         </div>
     )
 };

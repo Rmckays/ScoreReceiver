@@ -106,9 +106,13 @@ export default function Navigation() {
     };
 
     const navigateToPage = (event) => {
-        console.log('Hit Button');
-        console.log(event.target.textContent);
-        switch(event.target.textContent){
+        let navigationNode = event.target;
+
+        while(!navigationNode.getAttribute("page")){
+            navigationNode = navigationNode.parentNode;
+        }
+
+        switch(navigationNode.innerText){
             case 'Home':
                 setPage(<Redirect to='/' />);
                 break;
@@ -163,9 +167,9 @@ export default function Navigation() {
                 {page}
                 <List>
                     {['Home', 'Search Teams', 'About'].map((text, index) => (
-                        <ListItem button key={text}>
+                        <ListItem button page={text} key={text} onClick={navigateToPage}>
                             <ListItemIcon>{getIcon(index)}</ListItemIcon>
-                            <ListItemText primary={text} onClick={navigateToPage}/>
+                            <ListItemText primary={text}/>
                         </ListItem>
                     ))}
                 </List>
