@@ -3,7 +3,7 @@ body {
 }
 
 .backdrop {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -15,7 +15,7 @@ body {
 
 .showcase {
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
 }
 
 #footer {
@@ -79,6 +79,10 @@ body {
     margin: 2vh 0;
 }
 
+.my-2r {
+    margin: 0;
+}
+
 .ml-1 {
     margin-left: 1rem;
 }
@@ -126,4 +130,24 @@ body {
 
 .text-white {
     color: white;
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 675px){
+    .r-flex {
+        display: block;
+    }
+
+    .f-1 {
+        font-size: 1.2rem;
+        margin: 0 1rem;
+    }
+
+    .my-2r {
+    margin: 1rem 0;
+}
+
+    .mt-1 {
+        margin-top: 10vh;
+    }
+
 }

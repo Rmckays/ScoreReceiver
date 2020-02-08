@@ -29,7 +29,7 @@ const TeamSelect = props => {
 
     return (
         <Select
-            className="bg-white w-1"
+            className="bg-white w-1 my-2r"
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             onChange={handleChange}

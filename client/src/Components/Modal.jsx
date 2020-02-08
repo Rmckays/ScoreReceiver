@@ -35,7 +35,7 @@ const ChartModal = props => {
   };
 
   return (
-    <div className="mt-2">
+    <div className="mt-2 modal-fit">
       <Button variant='contained' className='no-underline text-white mt-2' color="primary" type="button" onClick={handleOpen}>
         View Stats
       </Button>
